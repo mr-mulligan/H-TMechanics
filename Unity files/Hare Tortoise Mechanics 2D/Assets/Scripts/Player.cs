@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public static Player instance;
+    public float playerCurrency;
+
+    // Sets up player character
+    void Awake()
+    {
+        instance = this;
+        playerCurrency = 65;
+    }
 }

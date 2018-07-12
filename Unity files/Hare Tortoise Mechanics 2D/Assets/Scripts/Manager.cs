@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour {
 
-    public Transform[] waypoints;
-
+    public GameObject[] waypoints;
     public int waypointIndex = 0;
 
-    public float moveSpeed;
-
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Awake () {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
