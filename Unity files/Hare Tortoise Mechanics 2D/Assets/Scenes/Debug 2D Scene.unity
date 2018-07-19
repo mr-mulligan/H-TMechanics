@@ -899,7 +899,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4d0f1c5834a39474198a4571ed5d1001, type: 2}
+  - {fileID: 2100000, guid: ab614fd62c2ba10429d49db463368eb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1190,6 +1190,11 @@ Prefab:
     - target: {fileID: 1851483352367256, guid: f7b110f2b76a0554fab332f28c5f6308, type: 2}
       propertyPath: m_Name
       value: TortoiseSquare (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 65266069130582642, guid: f7b110f2b76a0554fab332f28c5f6308,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7b110f2b76a0554fab332f28c5f6308, type: 2}

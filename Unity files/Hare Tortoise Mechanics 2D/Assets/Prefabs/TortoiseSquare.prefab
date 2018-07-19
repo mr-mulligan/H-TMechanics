@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 33754686235179140}
   - component: {fileID: 65266069130582642}
   - component: {fileID: 23243138880886896}
+  - component: {fileID: 114999730428323922}
   m_Layer: 0
   m_Name: TortoiseSquare
   m_TagString: Tile
@@ -124,3 +125,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114999730428323922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851483352367256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3054ae7e4b42b9f4fadaaf3ff914b7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 0.5
+  player: {fileID: 0}

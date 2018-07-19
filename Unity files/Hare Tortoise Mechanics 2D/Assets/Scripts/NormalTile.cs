@@ -8,6 +8,7 @@ public class NormalTile : MonoBehaviour {
     public float playerSpeed = 0.5f;
     public Player player;
 
+    private Color startColor;
 
     // This will highlight tiles the player can move to
     // For now the movement is set at 1 per tile move
@@ -15,6 +16,7 @@ public class NormalTile : MonoBehaviour {
     {
         if (Player.instance.playerCurrency >= 1)
         {
+            startColor = GetComponent<Renderer>().material.color;
             GetComponent<Renderer>().material.color = Color.green;
         }
         else
@@ -36,7 +38,7 @@ public class NormalTile : MonoBehaviour {
 
     void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = Color.white; 
+        GetComponent<Renderer>().material.color = startColor; 
     }
 
     // Removes currency from player when they land on the tile, currently only takes away by 1
