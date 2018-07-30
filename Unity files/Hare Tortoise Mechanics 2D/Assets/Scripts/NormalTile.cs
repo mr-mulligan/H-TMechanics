@@ -7,7 +7,7 @@ public class NormalTile : MonoBehaviour {
 
     public float playerSpeed = 0.5f;
     public Player player;
-
+    public Manager manager;
     private Color startColor;
 
     // This will highlight tiles the player can move to
@@ -44,6 +44,7 @@ public class NormalTile : MonoBehaviour {
     // Removes currency from player when they land on the tile, currently only takes away by 1
     void ArrivedOnTile()
     {
+        
         Player.instance.playerCurrency--;
 
     }

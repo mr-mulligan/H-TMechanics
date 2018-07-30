@@ -7,7 +7,7 @@ public class BackwardsTile : MonoBehaviour {
 
     public float playerSpeed = 0.5f;
     public Player player;
-
+    public Manager manager;
     private Color startColor;
 
     // This will highlight tiles the player can move to
@@ -32,6 +32,7 @@ public class BackwardsTile : MonoBehaviour {
     {
         if (Player.instance.playerCurrency >= 1)
         {
+
             Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
         }
     }

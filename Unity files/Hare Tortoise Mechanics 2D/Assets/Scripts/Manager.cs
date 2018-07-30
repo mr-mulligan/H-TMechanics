@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour {
 
-    public GameObject[] waypoints;
-    public int waypointIndex = 0;
+    public List<GameObject> waypoints = new List<GameObject>();
+   
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Start () {
 
     }
 	

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,8 @@ public class Player : MonoBehaviour
     public float playerCurrency;
     public Text currencyText;
     public string currentTile;
-
+    public Manager manager;
+    public int index;
 
     // Sets up player character
     void Awake()
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
     // Shows how much currency player has on screen
     void Update()
     {
+        index = manager.waypoints.IndexOf();
+           );
         currencyText.text = "Currency: " + playerCurrency.ToString();
     }
 
@@ -33,7 +37,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Tile")
         {
             currentTile = other.name;
-            Debug.Log("Tile is " + other.name);
+            //Debug.Log("Tile is " + other.name);
+            
         }
     }
 }
