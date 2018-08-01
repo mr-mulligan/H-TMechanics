@@ -8,6 +8,7 @@ public class NormalTile : MonoBehaviour {
     public float playerSpeed = 0.5f;
     public Player player;
     public Manager manager;
+
     private Color startColor;
 
     // This will highlight tiles the player can move to
@@ -17,7 +18,7 @@ public class NormalTile : MonoBehaviour {
         if (Player.instance.playerCurrency >= 1)
         {
             startColor = GetComponent<Renderer>().material.color;
-            GetComponent<Renderer>().material.color = Color.green;
+            GetComponent<Renderer>().material.color = new Color32 (100, 255, 100, 255);
         }
         else
         {
