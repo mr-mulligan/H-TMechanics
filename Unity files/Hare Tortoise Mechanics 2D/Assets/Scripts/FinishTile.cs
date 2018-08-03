@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
-public class NormalTile : MonoBehaviour {
-
+public class FinishTile : MonoBehaviour {
 
     public float playerSpeed = 0.5f;
     public Player player;
@@ -19,7 +19,7 @@ public class NormalTile : MonoBehaviour {
         if (Player.instance.playerCurrency >= 1)
         {
             startColor = GetComponent<Renderer>().material.color;
-            GetComponent<Renderer>().material.color = new Color32 (100, 255, 100, 255);
+            GetComponent<Renderer>().material.color = Color.green;
         }
         else
         {
@@ -34,21 +34,21 @@ public class NormalTile : MonoBehaviour {
     {
         if (Player.instance.playerCurrency >= 1)
         {
+
             Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
         }
     }
 
     void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = startColor; 
+        GetComponent<Renderer>().material.color = startColor;
     }
 
-    // Removes currency from player when they land on the tile, currently only takes away by 1
+    // Currently restarts game
     void ArrivedOnTile()
     {
-        
-        Player.instance.playerCurrency--;
-
+        SceneManager.LoadScene("Debug 2D Scene");
+             
     }
 }
 

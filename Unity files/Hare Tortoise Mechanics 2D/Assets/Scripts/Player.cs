@@ -10,14 +10,17 @@ public class Player : MonoBehaviour
 
     public static Player instance;
     public float playerCurrency;
-    public TextMeshProUGUI currencyText;
-    public string currentTile;
-    public Manager manager;
     public int index;
+    public TextMeshProUGUI currencyText;
+    public Manager manager;
+    public string currentTile;
+    public GameObject[] tiles;
 
     // Sets up player character
     void Awake()
     {
+        tiles = GameObject.FindGameObjectsWithTag("Tile");
+        
         instance = this;
         playerCurrency = 65;
     }
@@ -25,7 +28,7 @@ public class Player : MonoBehaviour
     // Shows how much currency player has on screen
     void Update()
     {
-        //index = manager.waypoints.IndexOf();
+
         currencyText.text = "Currency: " + playerCurrency.ToString();
     }
 
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Tile")
         {
+            index = other.GetComponent<TileNumber>().tileValue;
             currentTile = other.name;
             //Debug.Log("Tile is " + other.name);
             

@@ -8,6 +8,7 @@ public class BackwardsTile : MonoBehaviour {
     public float playerSpeed = 0.5f;
     public Player player;
     public Manager manager;
+
     private Color startColor;
 
     // This will highlight tiles the player can move to
