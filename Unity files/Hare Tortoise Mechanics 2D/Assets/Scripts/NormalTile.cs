@@ -9,6 +9,7 @@ public class NormalTile : MonoBehaviour {
     public float playerSpeed = 0.5f;
     public Player player;
     public Manager manager;
+    public TileNumber tilenumber;
 
     private Color startColor;
 
@@ -18,6 +19,7 @@ public class NormalTile : MonoBehaviour {
     {
         if (Player.instance.playerCurrency >= 1)
         {
+            tilenumber = GetComponent<TileNumber>();
             startColor = GetComponent<Renderer>().material.color;
             GetComponent<Renderer>().material.color = new Color32 (100, 255, 100, 255);
         }
@@ -26,6 +28,11 @@ public class NormalTile : MonoBehaviour {
             GetComponent<Renderer>().material.color = Color.red;
         }
 
+        // Will change colour of tile to red as well if its behind the player to indicate you cannot move to it
+        if (Player.instance.index >= tilenumber.tileValue)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
 
     }
     // This will move the character to that tile on click
@@ -34,7 +41,10 @@ public class NormalTile : MonoBehaviour {
     {
         if (Player.instance.playerCurrency >= 1)
         {
-            Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
+            if (Player.instance.index < tilenumber.tileValue)
+            {
+                Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
+            }
         }
     }
 
