@@ -9,18 +9,21 @@ public class Player : MonoBehaviour
 {
 
     public static Player instance;
+    public int playerNumber;
     public float playerCurrency;
     public int index;
+    public int areaIndex;
     public TextMeshProUGUI currencyText;
     public Manager manager;
     public string currentTile;
     public GameObject[] tiles;
+    public TextMeshProUGUI finishText;
+    
 
     // Sets up player character
     void Awake()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
-        
         instance = this;
         playerCurrency = 65;
     }
@@ -33,15 +36,13 @@ public class Player : MonoBehaviour
     }
 
     // Records what tile the player is on
-    // Trying to make waypointindex increase based on what tile player is on
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Tile")
         {
             index = other.GetComponent<TileNumber>().tileValue;
             currentTile = other.name;
-            //Debug.Log("Tile is " + other.name);
-            
+            areaIndex = other.GetComponent<TileNumber>().tileArea;
         }
     }
 }

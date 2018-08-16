@@ -5,6 +5,7 @@ using UnityEngine;
 public class TileNumber : MonoBehaviour {
 
     public int tileValue;
+    public int tileArea;
 
     // Use this for initialization
     void Start () {
