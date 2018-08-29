@@ -11,6 +11,7 @@ public class BackwardsTile : MonoBehaviour {
     public Manager manager;
     public TileNumber tilenumber;
     public TextMeshProUGUI costText;
+    public PauseMenu pauseMenu;
 
     public int costTile;
     public int indexDifference;
@@ -21,30 +22,34 @@ public class BackwardsTile : MonoBehaviour {
     // For now the movement is set at 1 per tile move
     void OnMouseEnter() {
 
-        tilenumber = GetComponent<TileNumber>();
-        startColor = GetComponent<Renderer>().material.color;
+        
+            tilenumber = GetComponent<TileNumber>();
+            startColor = GetComponent<Renderer>().material.color;
 
-        costText.color = Color.green;
-        CostOfTile();
+            costText.color = Color.green;
+            CostOfTile();
 
-        if (Player.instance.currentTile.Contains("Tortoise"))
+        if (pauseMenu.isPaused == false)
         {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = Color.green;
-        }
+            if (Player.instance.currentTile.Contains("Tortoise"))
+            {
+                GetComponent<Renderer>().material.color = Color.red;
+            }
+            else
+            {
+                GetComponent<Renderer>().material.color = Color.green;
+            }
 
-        // Change to red if tile is ahead of player
-        if (Player.instance.index <= tilenumber.tileValue)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
+            // Change to red if tile is ahead of player
+            if (Player.instance.index <= tilenumber.tileValue)
+            {
+                GetComponent<Renderer>().material.color = Color.red;
+            }
 
-        if (Player.instance.areaIndex != tilenumber.tileArea)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
+            if (Player.instance.areaIndex != tilenumber.tileArea)
+            {
+                GetComponent<Renderer>().material.color = Color.red;
+            }
         }
 }
 

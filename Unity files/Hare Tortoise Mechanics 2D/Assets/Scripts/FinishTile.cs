@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
 
-public class FinishTile : MonoBehaviour
-{
-
+public class FinishTile : MonoBehaviour {
 
         public float playerSpeed = 0.5f;
         public Player player;
@@ -21,18 +19,20 @@ public class FinishTile : MonoBehaviour
         public GameObject finishMenu;
         public TextMeshProUGUI winnerText;
         private Color startColor;
+        public PauseMenu pauseMenu;
 
         private void Awake()
         {
             costText.text = "";
         finishMenu.SetActive(false);
-        
+        pauseMenu.GetComponent<PauseMenu>();
         }
 
-        // This will highlight tiles the player can move to and will lead to calculating how much it will cost the player
-        void OnMouseEnter()
+    // This will highlight tiles the player can move to and will lead to calculating how much it will cost the player
+    void OnMouseEnter()
+    {
+        if (pauseMenu.isPaused == false)
         {
-
             tilenumber = GetComponent<TileNumber>();
             startColor = GetComponent<Renderer>().material.color;
 
@@ -59,6 +59,7 @@ public class FinishTile : MonoBehaviour
             }
 
         }
+    }
         // This will move the character to that tile on click if you can afford the tile
         void OnMouseDown()
         {

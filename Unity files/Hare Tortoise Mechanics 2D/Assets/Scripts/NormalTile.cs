@@ -15,44 +15,51 @@ public class NormalTile : MonoBehaviour {
 
     public int costTile;
     public int indexDifference;
+    public PauseMenu pauseMenu;
 
     private Color startColor;
 
     private void Awake()
     {
         costText.text = "";
+        pauseMenu.GetComponent<PauseMenu>();
     }
 
+    void Update()
+    {
+        
+    }
     // This will highlight tiles the player can move to and will lead to calculating how much it will cost the player
     void OnMouseEnter()
     {
+      
+            tilenumber = GetComponent<TileNumber>();
+            startColor = GetComponent<Renderer>().material.color;
 
-        tilenumber = GetComponent<TileNumber>();
-        startColor = GetComponent<Renderer>().material.color;
-
-
-        costText.color = Color.red;
-        CostOfTile();
-
-        // If player can afford tile, it will go green, if not then red
-        if (Player.instance.playerCurrency >= costTile)
+            costText.color = Color.red;
+            CostOfTile();
+        if (pauseMenu.isPaused == false)
         {
+            // If player can afford tile, it will go green, if not then red
+            if (Player.instance.playerCurrency >= costTile)
+            {
 
-            GetComponent<Renderer>().material.color = new Color32 (100, 255, 100, 255);
-            
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
+                GetComponent<Renderer>().material.color = new Color32(100, 255, 100, 255);
 
-        // Will also change colour of tile to red as well if its behind the player to indicate you cannot move to it
-        if (Player.instance.index >= tilenumber.tileValue)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
+            }
+            else
+            {
+                GetComponent<Renderer>().material.color = Color.red;
+            }
 
+            // Will also change colour of tile to red as well if its behind the player to indicate you cannot move to it
+            if (Player.instance.index >= tilenumber.tileValue)
+            {
+                GetComponent<Renderer>().material.color = Color.red;
+            }
+        }
     }
+
     // This will move the character to that tile on click if you can afford the tile
     void OnMouseDown()
     {
@@ -77,6 +84,7 @@ public class NormalTile : MonoBehaviour {
     {
         
         Player.instance.playerCurrency -= costTile;
+        manager.playerActive++;
 
     }
 

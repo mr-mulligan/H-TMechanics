@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public string currentTile;
     public GameObject[] tiles;
     public TextMeshProUGUI finishText;
+    public bool canMove;
     
 
     // Sets up player character
@@ -31,6 +32,10 @@ public class Player : MonoBehaviour
     // Shows how much currency player has on screen
     void Update()
     {
+        if (playerNumber == 1)
+        {
+            currencyText.color = Color.cyan;
+        }
 
         currencyText.text = "Currency: " + playerCurrency.ToString();
     }
