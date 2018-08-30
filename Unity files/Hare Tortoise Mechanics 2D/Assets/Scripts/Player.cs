@@ -19,11 +19,14 @@ public class Player : MonoBehaviour
     public GameObject[] tiles;
     public TextMeshProUGUI finishText;
     public bool canMove;
-    
+    public int lettuces;
+    public TextMeshProUGUI lettuceText;
+
 
     // Sets up player character
     void Awake()
     {
+        lettuces = 3;
         tiles = GameObject.FindGameObjectsWithTag("Tile");
         instance = this;
         playerCurrency = 65;
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
     // Shows how much currency player has on screen
     void Update()
     {
+        lettuceText.text = "X" + lettuces.ToString();
         if (playerNumber == 1)
         {
             currencyText.color = Color.cyan;
@@ -40,7 +44,7 @@ public class Player : MonoBehaviour
         currencyText.text = "Currency: " + playerCurrency.ToString();
     }
 
-    // Records what tile the player is on
+    // Records what tile the player is on and minus a turn
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Tile")

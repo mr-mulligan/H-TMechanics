@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-public class NormalTile : MonoBehaviour {
+public class CarrotTile : MonoBehaviour {
 
 
     public float playerSpeed = 0.5f;
@@ -23,6 +23,7 @@ public class NormalTile : MonoBehaviour {
     {
         costText.text = "";
         pauseMenu.GetComponent<PauseMenu>();
+        tilenumber = GetComponent<TileNumber>();
     }
 
     void Update()
@@ -84,7 +85,7 @@ public class NormalTile : MonoBehaviour {
     {
         
         Player.instance.playerCurrency -= costTile;
-        manager.playerActive++;
+        manager.turns--;
 
     }
 

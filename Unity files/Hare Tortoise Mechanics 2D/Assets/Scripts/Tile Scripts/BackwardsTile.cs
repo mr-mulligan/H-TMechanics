@@ -82,6 +82,7 @@ public class BackwardsTile : MonoBehaviour {
     void ArrivedOnTile()
     {
         Player.instance.playerCurrency += costTile;
+        manager.turns--;
 
     }
 

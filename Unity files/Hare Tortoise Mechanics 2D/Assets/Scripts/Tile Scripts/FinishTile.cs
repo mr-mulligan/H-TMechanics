@@ -41,7 +41,7 @@ public class FinishTile : MonoBehaviour {
             CostOfTile();
 
             // If player can afford tile, it will go green, if not then red
-            if (Player.instance.playerCurrency >= costTile)
+            if (Player.instance.playerCurrency >= costTile && Player.instance.playerCurrency <= 10 && Player.instance.lettuces <= 0)
             {
 
                 GetComponent<Renderer>().material.color = new Color32(100, 255, 100, 255);
@@ -65,10 +65,17 @@ public class FinishTile : MonoBehaviour {
         {
             if (Player.instance.playerCurrency >= costTile)
             {
-                if (Player.instance.index < tilenumber.tileValue)
+              if (Player.instance.index < tilenumber.tileValue)
+              {
+                if (Player.instance.playerCurrency <= 10)
                 {
-                    Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
+                    if (Player.instance.lettuces <= 0)
+                    {
+                        Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
+                    }
                 }
+              }
+
             }
         }
 
@@ -101,7 +108,7 @@ public class FinishTile : MonoBehaviour {
     // Changes colour of text to match player colours
     void setFinishText()
     {
-        winnerText.text = "Player " + Player.instance.playerNumber + " wins!";
+        winnerText.text = "You win!";
         if (Player.instance.playerNumber == 1)
         {
             winnerText.color = Color.cyan;
