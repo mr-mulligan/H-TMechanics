@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Debug 2D Scene.unity
     guid: 9924b4bc42dc340459987668b1f8075c
+  - enabled: 1
+    path: Assets/Scenes/Instructions Screen.unity
+    guid: fe94a73da512d8349b34802aa486bb15

@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    // Pauses game
+    // Pauses game on click
     void OnClick()
     {
 

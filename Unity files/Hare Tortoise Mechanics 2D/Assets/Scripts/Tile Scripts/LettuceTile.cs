@@ -17,20 +17,18 @@ public class LettuceTile : MonoBehaviour {
     public int costTile;
     public int indexDifference;
     public PauseMenu pauseMenu;
+    public AudioSource LettuceSound;
 
     private Color startColor;
 
     private void Awake()
     {
+        LettuceSound = GetComponent<AudioSource>();
         costText.text = "";
         pauseMenu.GetComponent<PauseMenu>();
         tilenumber = GetComponent<TileNumber>();
     }
 
-    void Update()
-    {
-        
-    }
     // This will highlight tiles the player can move to and will lead to calculating how much it will cost the player
     void OnMouseEnter()
     {
@@ -89,6 +87,7 @@ public class LettuceTile : MonoBehaviour {
         Player.instance.playerCurrency -= costTile;
         manager.turns--;
         Player.instance.lettuces--;
+        LettuceSound.Play();
 
     }
 

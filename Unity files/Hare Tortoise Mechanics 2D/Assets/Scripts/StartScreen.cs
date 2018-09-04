@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class StartScreen : MonoBehaviour{
 
 
-
     //Any button on UI can use this to go to level
     public void GoToGame()
     {
@@ -22,5 +21,10 @@ public class StartScreen : MonoBehaviour{
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowInstructions()
+    {
+        SceneManager.LoadScene("Instructions Screen");
     }
 }

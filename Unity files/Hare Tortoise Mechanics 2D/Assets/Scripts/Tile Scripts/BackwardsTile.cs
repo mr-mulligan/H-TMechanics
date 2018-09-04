@@ -13,10 +13,16 @@ public class BackwardsTile : MonoBehaviour {
     public TextMeshProUGUI costText;
     public PauseMenu pauseMenu;
 
+    public AudioSource TileSound;
     public int costTile;
     public int indexDifference;
 
     private Color startColor;
+
+    private void Awake()
+    {
+        TileSound = GetComponent<AudioSource>();
+    }
 
     // This will highlight tiles the player can move to
     // For now the movement is set at 1 per tile move
@@ -83,7 +89,7 @@ public class BackwardsTile : MonoBehaviour {
     {
         Player.instance.playerCurrency += costTile;
         manager.turns--;
-
+        TileSound.Play();
     }
 
     // Works out the int difference between player and tile cursor is over and then takes the value from the PriceOfTiles index
@@ -92,6 +98,7 @@ public class BackwardsTile : MonoBehaviour {
         indexDifference = tilenumber.tileValue - Player.instance.index;
        // Debug.Log(indexDifference);
         PriceOfTiles();
+
     }
 
     // Messy code but works properly - whatever the indexdifference is will set the amount player will earn going to the tile

@@ -16,6 +16,7 @@ public class CarrotTile : MonoBehaviour {
     public int costTile;
     public int indexDifference;
     public PauseMenu pauseMenu;
+    public AudioSource CurrencySound;
 
     private Color startColor;
 
@@ -24,6 +25,7 @@ public class CarrotTile : MonoBehaviour {
         costText.text = "";
         pauseMenu.GetComponent<PauseMenu>();
         tilenumber = GetComponent<TileNumber>();
+        CurrencySound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -68,6 +70,7 @@ public class CarrotTile : MonoBehaviour {
         {
             if (Player.instance.index < tilenumber.tileValue)
             {
+                CurrencySound.Play();
                 Player.instance.transform.DOMove(transform.position, playerSpeed).SetEase(Ease.InOutQuad).OnComplete(ArrivedOnTile);
             }
         }
@@ -83,10 +86,9 @@ public class CarrotTile : MonoBehaviour {
     // Removes currency from player when they land on the tile by whatever the cost of the tile is
     void ArrivedOnTile()
     {
-        
         Player.instance.playerCurrency -= costTile;
         manager.turns--;
-
+        
     }
 
     // Works out the int difference between player and tile cursor is over and then takes the value from the PriceOfTiles index
